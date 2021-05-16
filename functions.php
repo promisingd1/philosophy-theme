@@ -1,4 +1,5 @@
 <?php
+require_once get_theme_file_path('inc/tgm.php');
 if(site_url() == 'http://localhost/learnwithpromise' ){
 	define('VERSION', time());
 } else {
@@ -11,6 +12,8 @@ function philosophy_theme_setup() {
 	add_theme_support('html5', ['search-form', 'comment-form']);
 	add_theme_support('post-formats', ['image', 'video', 'audio', 'link', 'gallery', 'quote']);
 	add_editor_style('/assets/css/editor-style.css');
+
+	register_nav_menu('philosophy_top_menu', __('Philosophy Menu', 'philosophy-theme'));
 }
 add_action('after_setup_theme', 'philosophy_theme_setup');
 
