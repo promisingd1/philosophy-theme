@@ -11,7 +11,8 @@
 
     while ($philosophy_featured_post-> have_posts()) {
         $philosophy_featured_post->the_post();
-        $post_data[] = array(
+        $categories = get_the_category();
+	    $post_data[] = array(
 	        'title'          => get_the_title(),
 	        'permalink'     => get_permalink(),
 	        'post-thumbnail' => get_the_post_thumbnail_url( get_the_ID(), 'large' ),
@@ -19,6 +20,7 @@
 	        'author_url' => get_author_posts_url(get_the_author_meta('ID')),
 	        'author_avatar'     => get_avatar_url( get_the_author_meta( "ID" ) ),
             'date' => get_the_date(),
+            'cat' => $categories[0]->name
         );
     }
 
@@ -34,7 +36,11 @@
                 ?>');">
 
 					<div class="entry__content">
-						<span class="entry__category"><a href="#0">Music</a></span>
+						<span class="entry__category">
+                            <a href="#0">
+                                <?php echo esc_html($post_data[0]['cat']); ?>
+                            </a>
+                        </span>
 
 						<h1>
                             <a href="<?php echo esc_url($post_data[0]['permalink'])
@@ -66,11 +72,46 @@
 			</div> <!-- end featured__big -->
 
 			<div class="featured__column featured__column--small">
+                <?php for($i = 1; $i < 3; $i++) :
+                 ?>
+                    <div class="entry" style="background-image:url('<?php echo esc_url($post_data[$i]['post-thumbnail'])
+	                ?>');">
 
+                        <div class="entry__content">
+                            <span class="entry__category">
+                                <a href="#0">
+                                    <?php echo esc_html($post_data[$i]['cat']); ?>
+                                </a>
+                            </span>
 
+                            <h1>
+                                <a href="<?php echo esc_url($post_data[$i]['permalink'])
+				                ?>" title="">
+					                <?php echo esc_html($post_data[$i]['title'])?>
+                                </a>
+                            </h1>
 
+                            <div class="entry__info">
+                                <a href="#0" class="entry__profile-pic">
+                                    <img class="avatar"
+                                         src="<?php esc_url($post_data[$i]['author_avatar']) ?>"
+                                         alt="<?php echo esc_url($post_data[$i]['author']) ?>">
+                                </a>
 
+                                <ul class="entry__meta">
+                                    <li>
+                                        <a href="<?php esc_url($post_data[$i]['author_url']) ?>">
+							                <?php echo esc_url($post_data[$i]['author']) ?>
+                                        </a></li>
+                                    <li>
+						                <?php echo esc_html($post_data[$i]['date']) ?>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div> <!-- end entry__content -->
 
+                    </div> <!-- end entry -->
+                <?php endfor; ?>
 			</div> <!-- end featured__small -->
 		</div> <!-- end featured -->
 
