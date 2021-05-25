@@ -7,13 +7,12 @@
         <div class="masonry">
 
             <div class="grid-sizer"></div>
-            <?php
-            while (have_posts()) {
-                the_post();
-
-                get_template_part("template-parts/post-formats/post", get_post_format());
-            }
-            ?>
+           <?php
+                while(have_posts()) {
+                    the_post();
+                    get_template_part( 'template-parts/post-formats/post', get_post_format());
+                }
+           ?> 
 
         </div> <!-- end masonry -->
     </div> <!-- end masonry-wrap -->
@@ -22,15 +21,7 @@
         <div class="col-full">
             <nav class="pgn">
                 <ul>
-                    <li><a class="pgn__prev" href="#0">Prev</a></li>
-                    <li><a class="pgn__num" href="#0">1</a></li>
-                    <li><span class="pgn__num current">2</span></li>
-                    <li><a class="pgn__num" href="#0">3</a></li>
-                    <li><a class="pgn__num" href="#0">4</a></li>
-                    <li><a class="pgn__num" href="#0">5</a></li>
-                    <li><span class="pgn__num dots">…</span></li>
-                    <li><a class="pgn__num" href="#0">8</a></li>
-                    <li><a class="pgn__next" href="#0">Next</a></li>
+                    <?php philosophy_paginate_links(); ?>    
                 </ul>
             </nav>
         </div>

@@ -16,7 +16,7 @@
 	        'title'          => get_the_title(),
 	        'permalink'     => get_permalink(),
 	        'post-thumbnail' => get_the_post_thumbnail_url( get_the_ID(), 'large' ),
-	        'author'         => get_the_author_meta( 'display_name' ),
+	        'author'         => get_the_author_meta( 'first_name' ),
 	        'author_url' => get_author_posts_url(get_the_author_meta('ID')),
 	        'author_avatar'     => get_avatar_url( get_the_author_meta( "ID" ) ),
             'date' => get_the_date(),
@@ -59,7 +59,7 @@
 							<ul class="entry__meta">
 								<li>
                                     <a href="<?php esc_url($post_data[0]['author_url']) ?>">
-                                        <?php echo esc_url($post_data[0]['author']) ?>
+                                        <?php echo esc_html($post_data[0]['author']) ?>
                                     </a></li>
 								<li>
                                     <?php echo esc_html($post_data[0]['date']) ?>
@@ -101,7 +101,7 @@
                                 <ul class="entry__meta">
                                     <li>
                                         <a href="<?php esc_url($post_data[$i]['author_url']) ?>">
-							                <?php echo esc_url($post_data[$i]['author']) ?>
+							                <?php echo esc_html($post_data[$i]['author']) ?>
                                         </a></li>
                                     <li>
 						                <?php echo esc_html($post_data[$i]['date']) ?>

@@ -4,13 +4,19 @@
 
 	<h2 class="header__nav-heading h6"><?php _e('Site Navigation', 'philosophy-theme') ?></h2>
 
-    <?php wp_nav_menu(
+    <?php
+        $philosophy_menu = wp_nav_menu(
             array(
                 'theme_location' => 'philosophy_top_menu',
                 'menu_class' => 'header__nav',
                 'menu_id' => 'philosophy_top_menu'
-            )
-    ) ?>
+            ) 
+        );
+        // Adding class using str_replace method. 
+        $philosophy_menu = str_replace('menu-item-has-children', 'menu-item-has-children has-children', $philosophy_menu);
+        echo $philosophy_menu;
+
+    ?>
 
 	<a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu"><?php _e('Close', 'philosophy-theme') ?></a>
 
