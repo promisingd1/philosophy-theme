@@ -20,7 +20,7 @@
 
 <!-- pageheader
 ================================================== -->
-<section class="s-pageheader s-pageheader--home">
+<section class="s-pageheader <?php if ( is_home() ) echo "s-pageheader--home" ?>">
 
     <header class="header">
         <div class="header__content row">
@@ -68,6 +68,10 @@
     </header> <!-- header -->
 
 
-   <?php get_template_part('template-parts/blog-home/featured') ?>
+    <?php 
+        if ( is_home() ) {
+            get_template_part('template-parts/blog-home/featured');
+        }
+    ?> 
 
 </section> <!-- end s-pageheader -->
