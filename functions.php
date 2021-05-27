@@ -54,3 +54,18 @@ function philosophy_paginate_links()
 	$links = str_replace("prev pgn__num", "pgn__prev", $links);
 	echo $links;
 }
+
+remove_action('term_description', 'wpautop');
+
+function philosophy_about_page_sidebar() {
+	register_sidebar( array(
+		'name'          => __( 'Philosophy About Us Sidebar', 'philosophy-theme' ),
+		'id'            => 'about-us',
+		'description'   => __( 'This side bar is shown in the about us page', 'philosophy-theme' ),
+		'before_widget' => '<div id="%1$s" class="col-block %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h3 class="quarter-top-margin">',
+		'after_title'   => '</h3>',
+	) );
+}
+add_action('widgets_init', 'philosophy_about_page_sidebar');
