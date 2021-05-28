@@ -72,6 +72,11 @@ function philosophy_theme_register_required_plugins() {
 			'slug'      => 'attachments',
 			'required'  => false,
 		),
+		array(
+			'name'      => 'WP Google Map',
+			'slug'      => 'wp-google-maps',
+			'required'  => false,
+		),
 
 
 
